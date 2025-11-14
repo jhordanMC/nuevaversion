@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo de Ingreso - Pedidos Ya</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url('https://wallpapers.com/images/featured/fondo-de-espacio-htygkta8z6o3mcx2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    .motivational-quote {
+      position: fixed;
+      top: 20px;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      margin: 0 auto;
+      padding: 0 10px;
+      z-index: 900;
+      white-space: normal;
+      line-height: 1.4;
+    }
+    @media (max-width: 600px) {
+      .motivational-quote {
+        font-size: 18px;
+        max-width: 90%;
+      }
+    }
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border: 2px solid rgba(107, 55, 148, 0.5);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      width: 300px;
+      text-align: center;
+      color: white;
+      z-index: 1000;
+    }
+    .login-container img {
+      height: 60px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      object-fit: cover;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: white;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 80%;
+      max-width: 250px;
+      padding: 10px;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
+      display: block;
+    }
+    button {
+      width: 80%;
+      max-width: 250px;
+      padding: 10px;
+      background-color: #ff2d55;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 10px auto;
+      display: block;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089737.png');
+      background-size: 24px;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      padding-left: 40px;
+      text-align: left;
+    }
+    button:hover {
+      background-color: #e02448;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089736.png');
+      background-size: 24px;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+    .success {
+      color: green;
+      font-size: 0.9em;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <p class="motivational-quote" id="quote"></p>
+  <div class="login-container">
+    <img src="https://bestplacestoworkfor.org/sites/default/files/articles/Pedidosya.jpg" alt="Pedidos Ya Logo">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+      <input type="text" placeholder="Usuario" name="usuario" required aria-label="Usuario">
+      <input type="password" placeholder="Contraseña" name="password" required aria-label="Contraseña">
+      <button type="submit">Ingresar</button>
+    </form>
+    <p id="errorMessage" class="error"></p>
+  </div>
+
+  <script>
+    const motivationalQuotes = [
+      "¡El éxito es la suma de pequeños esfuerzos repetidos día tras día!",
+      "¡No temas fallar, teme no intentarlo!",
+      "¡Cree en ti mismo, eres más grande que cualquier obstáculo!",
+      "¡La única forma de hacer un gran trabajo es amar lo que haces!",
+      "¡No importa lo lento que vayas, sigue avanzando!",
+      "¡Sé tú mismo, los demás ya están ocupados!",
+      "¡El fracaso es una oportunidad para aprender y crecer!",
+      "¡La vida es un regalo, aprovéchala al máximo!",
+      "¡Cáete, levántate y sigue adelante, siempre hay una nueva oportunidad!",
+      "¡La gratitud abre la puerta a la felicidad!"
+    ];
+
+    function displayRandomQuote() {
+      const randomIndex = Math.floor(Math.random() * motivationalQuotes.length);
+      document.getElementById("quote").textContent = motivationalQuotes[randomIndex];
+      document.getElementById("quote").style.display = 'block';
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const usuario = document.querySelector('input[name="usuario"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+      const errorMessage = document.getElementById('errorMessage');
+
+      if (usuario === '' || password === '') {
+        errorMessage.textContent = "Por favor, completa todos los campos.";
+        errorMessage.className = "error";
+        errorMessage.style.display = 'block';
+      } else if (usuario === 'Jhordan' && password === 'Medina') {
+        errorMessage.textContent = `¡Ingreso exitoso, ${usuario}!`;
+        errorMessage.className = "success";
+        errorMessage.style.display = 'block';
+        displayRandomQuote();
+        setTimeout(() => {
+          window.location.href = 'Paginaprincipal.html';
+        }, 1000);
+      } else {
+        errorMessage.textContent = "Usuario o contraseña incorrectos.";
+        errorMessage.className = "error";
+        errorMessage.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

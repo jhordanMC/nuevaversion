@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHORDANMC TEMPLATES - Contención de Críticos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1498116069452-debf99cb30f0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGVzcGFjaW8lMjBuZWdyb3xlbnwwfHwwfHx8MA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .main-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(107, 55, 148, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+            z-index: 1000;
+            width: 90%;
+            max-width: 600px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        img {
+            height: 60px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            object-fit: cover;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        h1 {
+            color: white;
+            margin: 0;
+            font-size: 2em;
+        }
+        p {
+            color: white;
+            margin: 10px 0;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            transition: background-color 0.3s;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089737.png');
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            padding-left: 40px;
+            text-align: left;
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089736.png');
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+        .navigation-bar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            z-index: 2000;
+        }
+        .nav-button {
+            padding: 8px 16px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089737.png');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            padding-left: 35px;
+            text-align: left;
+            display: inline-block;
+        }
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089736.png');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: 8px center;
+        }
+        .nav-button.home {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/25/25694.png');
+        }
+        .nav-button.home:hover {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/25/25694.png');
+        }
+        #mensaje {
+            margin-top: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+            button, .nav-button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+            .navigation-bar {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation-bar">
+        <a href="Paginaprincipal.html" class="nav-button home">Inicio</a>
+        <a href="Primeraparte.html" class="nav-button">Página 1</a>
+        <a href="Segundaparte.html" class="nav-button">Página 2</a>
+        <a href="TerceraParte.html" class="nav-button">Página 3</a>
+        <a href="CuartaParte.html" class="nav-button">Página 4</a>
+    </div>
+
+    <div class="main-container">
+        <img src="https://bestplacestoworkfor.org/sites/default/files/articles/Pedidosya.jpg" alt="PedidosYa Logo">
+        <h1>JHORDANMC TEMPLATES, Contención de Críticos</h1>
+        <p>Haz clic para copiar una frase:</p>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'Te entiendo, xxx. Descuide, yo le puedo ayudar con el cambio de la dirección.')">1. Cambio de dirección de envío</button>
+            <button onclick="copiarAlPortapapeles(this, 'Para proceder con ello, ¿me podrías pasar tu dirección correcta, por favor?')">2. Cambio de dirección parte 2</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te entiendo, XXX. Descuide, yo le puedo apoyar con el cambio. Averiguaré los horarios disponibles, vuelvo en breve.')">3. Cambio de horario preorder</button>
+            <button onclick="copiarAlPortapapeles(this, 'De igual manera, recuerde que puede dejar la valoración al local encargado para que pueda dejar un comentario sobre el servicio que ha presentado. Es presionando sobre el nombre del local dentro de la misma app.')">4. Contención de críticos por local demorado parte 1</button>
+            <button onclick="copiarAlPortapapeles(this, 'También he dejado registrado lo ocurrido para que no se repita esta situación. Nos encargaremos de tomar las medidas necesarias para cambiar y mejorar nuestros servicios.')">5. Contención OMAD</button>
+            <button onclick="copiarAlPortapapeles(this, 'Comprendo su posición, XXX. Créame que al cancelar la orden, se deja un registro para que se le cobre sobre la orden al motorizado y a la vez se deja un registro interno contra el rider.')">6. Contención OMAD contra el rider</button>
+            <button onclick="copiarAlPortapapeles(this, 'De ante mano, también estoy dejando notificado la demora de tu pedido a nuestro motorizado para que se apure en llevar tu pedido y llegue lo antes posible. 🚀')">7. Floro por demora extrema de parte del rider</button>
+            <button onclick="copiarAlPortapapeles(this, 'Comprendo su posición, Hugo. Créame que al cancelar la orden, se deja un registro para que el local no tenga ganancias. Ya he tomado medidas contra el local.')">8. Contención OMAD contra el local</button>
+            <button onclick="copiarAlPortapapeles(this, 'Comprendo su posición, María. Es que veo que el local ha tenido un volumen de pedidos inesperado, lo que ha retrasado la preparación y la entrega.')">9. Contención local demorado</button>
+            <button onclick="copiarAlPortapapeles(this, 'Pero no se preocupe, veo que mi compañero xxx está en el local desde las xx:xx y ya falta poco para su pedido.')">10. Contención local demorado parte 2</button>
+            <button onclick="copiarAlPortapapeles(this, 'De ante mano, también estoy dejando notificado la demora a nuestros motorizados cercanos para que tomen tu pedido como prioridad. Haremos todo lo posible para que tu orden llegue a tu destino. 🚀')">11. Floro 1 por queued</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te entiendo, xx. Es que veo que el local ha tenido un volumen de pedidos inesperado, lo que ha retrasado la preparación y la entrega. Es debido a ello que mis compañeros todavía no han podido retirar tu pedido del local.')">12. Floro 2 por queued para responder a criticos</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te entiendo, xxx. Yo le apoyaré con la cancelación y devolución total de la orden.')">13. Devolución total y cancelación</button>
+            <button onclick="copiarAlPortapapeles(this, 'Descuide, esta vez contamos con un rider con ganas de trabajar y un local a punto de terminar su pedido. Tenemos todas las opciones para que su pedido llegue en buen estado. 🤝')">14. Frase de contención criticos por dentro de entrega</button>
+            <button onclick="copiarAlPortapapeles(this, 'Para tu tranquilidad, se ha enviado una constancia de la devolución a tu correo electrónico XXX, que garantiza que, por parte de Pedidos Ya, se hizo la devolución.')">15. Envio a correo por devolución</button>
+            <button onclick="copiarAlPortapapeles(this, 'Al contrario, gracias a usted por su confianza y tiempo ofrecido, xxx. ¡Cuídese, tenga una buena noche! 💖')">16. DESPEDIDA CONFIANZUDO</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te entiendo, XXX. Descuide, me ha pasado a mí también.')">17. Cambio de método de pago parte 1</button>
+            <button onclick="copiarAlPortapapeles(this, 'Yo le apoyaré con la cancelación para que pueda ingresar nuevamente su tarjeta.')">18. Cambio de método de pago parte 2</button>
+            <button onclick="copiarAlPortapapeles(this, 'Ya puede volver a generar el pedido, xxx. Recuerde esta vez elegir su medio de pago, por favor. 💳')">19. Cancelación por cambio metodo de pago parte 3</button>
+            <button onclick="copiarAlPortapapeles(this, 'También he devuelto el cupón utilizado en tu compra de xxx.')">20. Devolucion cupón</button>
+            <button onclick="copiarAlPortapapeles(this, 'Comprendo su posición, XXX, perdón por hacerlo esperar. Ahora mismo le apoyo con la cancelación y el reembolso total de la orden.')">21. Devolviendo a pin sin gps</button>
+        </div>
+        <div id="mensaje"></div>
+    </div>
+    <script>
+        function copiarAlPortapapeles(boton, texto) {
+            const colorOriginal = boton.style.backgroundColor;
+            const backdropOriginal = boton.style.backdropFilter;
+            boton.style.backgroundColor = 'red';
+            boton.style.backdropFilter = 'none';
+            const tempInput = document.createElement('input');
+            tempInput.value = texto;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            document.getElementById('mensaje').textContent = '¡Copiado!';
+            setTimeout(() => {
+                boton.style.backgroundColor = colorOriginal;
+                boton.style.backdropFilter = backdropOriginal;
+                document.getElementById('mensaje').textContent = '';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHORDANMC TEMPLATES - Cambios</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1498116069452-debf99cb30f0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGVzcGFjaW8lMjBuZWdyb3xlbnwwfHwwfHx8MA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .main-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(107, 55, 148, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+            z-index: 1000;
+            width: 90%;
+            max-width: 600px;
+            margin-top: 100px;
+            margin-bottom: 20px;
+        }
+        #robot-container {
+            width: 200px;
+            height: 150px;
+            margin: 0 auto 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .robot-time-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 10px;
+        }
+        .clock-wrapper {
+            min-width: 100px;
+        }
+        #pedidosya-logo {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+        }
+        #peru-clock {
+            font-size: 28px;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+        }
+        #clock-icon {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+        h1, h2 {
+            color: white;
+            margin: 10px 0;
+            font-size: 2em;
+        }
+        h2 {
+            font-size: 1.5em;
+        }
+        p {
+            color: white;
+            margin: 10px 0;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .flag-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 5px;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+        button {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            transition: background-color 0.3s;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089737.png');
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            padding-left: 40px;
+            text-align: left;
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089736.png');
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+        .navigation-bar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            z-index: 2000;
+        }
+        .nav-button {
+            padding: 8px 16px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089737.png');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            padding-left: 35px;
+            text-align: left;
+            display: inline-block;
+        }
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089736.png');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: 8px center;
+        }
+        .nav-button.home {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/25/25694.png');
+        }
+        .nav-button.home:hover {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/25/25694.png');
+        }
+        .combobox {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            padding: 5px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            transition: background-color 0.3s;
+            max-width: 150px;
+            text-overflow: ellipsis;
+        }
+        .combobox:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .combobox:focus {
+            outline: none;
+        }
+        .combobox option {
+            background: rgba(255, 255, 255, 0.9);
+            color: black;
+            font-size: 0.9em;
+        }
+        .header-container {
+            position: relative;
+            display: inline-block;
+        }
+        .mostrar-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -50px;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mostrar-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .flag-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+        }
+        .flag-container.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .flag-container-content {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(107, 55, 148, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            max-width: 300px;
+            width: 90%;
+            color: white;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            width: 30px;
+            height: 30px;
+            font-size: 0.9em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        .close-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .time-switch-button {
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            padding: 8px 16px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .time-switch-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        .timer-container {
+            position: absolute;
+            top: 70px;
+            left: 120px;
+            padding: 8px 16px;
+            font-size: 1em;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+        }
+        .name-input {
+            position: absolute;
+            top: 70px;
+            right: 180px;
+            padding: 5px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            transition: background-color 0.3s;
+            max-width: 150px;
+            text-align: center;
+        }
+        .name-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .name-input:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .name-input:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .mexico-button, .colombia-button, .peru-button, .venezuela-button,
+        .argentina-button, .chile-button, .brasil-button, .elsalvador-button,
+        .guatemala-button, .republicadominicana-button, .panama-button,
+        .honduras-button, .paraguay-button, .bolivia-button, .uruguay-button {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            width: 120px;
+            height: 80px;
+            font-size: 0.9em;
+            line-height: 80px;
+            padding: 0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .mexico-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg'); }
+        .colombia-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg'); }
+        .peru-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Peru.svg'); }
+        .venezuela-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg'); }
+        .argentina-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg'); }
+        .chile-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Chile.svg'); }
+        .brasil-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg'); }
+        .elsalvador-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/34/Flag_of_El_Salvador.svg'); }
+        .guatemala-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/ec/Flag_of_Guatemala.svg'); }
+        .republicadominicana-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_the_Dominican_Republic.svg/640px-Flag_of_the_Dominican_Republic.svg.png'); }
+        .panama-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ab/Flag_of_Panama.svg'); }
+        .honduras-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/85/Flag_of_Honduras_%282022-%29.svg'); }
+        .paraguay-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/27/Flag_of_Paraguay.svg'); }
+        .bolivia-button { background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/48/Flag_of_Bolivia.svg'); }
+        .uruguay-button { background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1hwgYZrcGfwOFmeccHZkhyZw25_yJKldKJ8pQJOc0XnCCHXTom8QSKiwjMNI&s=10'); }
+        #mensaje {
+            margin-top: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .farewell-switch-button {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 8px 16px;
+            margin: 10px auto;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+        }
+        .farewell-switch-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5em; }
+            h2 { font-size: 1.2em; }
+            .button-grid { grid-template-columns: 1fr; }
+            .flag-grid { grid-template-columns: 1fr; }
+            button, .combobox, .name-input, .time-switch-button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+            .mexico-button, .colombia-button, .peru-button, .venezuela-button, 
+            .argentina-button, .chile-button, .brasil-button, .elsalvador-button, 
+            .guatemala-button, .republicadominicana-button, .panama-button, 
+            .honduras-button, .paraguay-button, .bolivia-button, .uruguay-button {
+                width: 100%;
+                max-width: 120px;
+                margin: 0 auto;
+            }
+            .navigation-bar {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+            }
+            .time-switch-button { top: 100px; left: 10px; }
+            .timer-container { top: 100px; left: 100px; }
+            .combobox { top: 140px; right: 10px; width: 120px; }
+            .name-input { top: 140px; right: 140px; width: 120px; }
+            .main-container {
+                margin-top: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation-bar">
+        <a href="Paginaprincipal.html" class="nav-button home">Inicio</a>
+        <a href="Primeraparte.html" class="nav-button">Página 1</a>
+        <a href="Segundaparte.html" class="nav-button">Página 2</a>
+        <a href="TerceraParte.html" class="nav-button">Página 3</a>
+        <a href="CuartaParte.html" class="nav-button">Página 4</a>
+    </div>
+    
+    <button class="time-switch-button" id="timeSwitchButton" onclick="toggleTime()">Tarde</button>
+    <div class="timer-container" id="timerDisplay">0s</div>
+    <select class="combobox" aria-label="Selecciona una opción de devolución" onchange="copiarAlPortapapeles(this, this.value)">
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="Te confirmo que se realizó la devolución de XXX a tu tarjeta XXX, terminada en XXX. La devolución demora aproximadamente 7 días hábiles como máximo en verse impactada en tu resumen de cuenta. Puedes encontrar toda la información de la devolución ingresando a 'Pedidos' desde la app y seleccionando este pedido.">1. Devolución Tarjeta Genérica</option>
+        <option value="Te confirmo que se realizó la devolución de XXX a tu tarjeta XXX de crédito, terminada en XXX. La devolución demora aproximadamente 7 días hábiles como máximo en verse impactada en tu resumen de cuenta. Puedes encontrar toda la información de la devolución ingresando a 'Pedidos' desde la app y seleccionando este pedido.">2. Devolución Tarjeta Crédito</option>
+        <option value="Te confirmo que se realizó la devolución de XXX a tu tarjeta XXX de débito, terminada en XXX. La devolución demora aproximadamente 7 días hábiles como máximo en verse impactada en tu resumen de cuenta. Puedes encontrar toda la información de la devolución ingresando a 'Pedidos' desde la app y seleccionando este pedido.">3. Devolución Tarjeta Débito</option>
+        <option value="Ya te realicé la devolución por XXX como saldo en Pedidos Ya. Recuerda que el mismo tiene validez por 360 días. Puedes corroborarlo ingresando desde el menú principal de la app a tu billetera Pedidos Ya.">4. Devolución Saldo PedidosYa</option>
+        <option value="Te confirmo que se realizó un reembolso de S/xx a tu medio de pago, que aparecerá en tu cuenta YAPE como "Devolución de Pedidos Ya". Normalmente, se refleja en hasta 48 horas, pero en casos excepcionales puede tardar hasta 30 días hábiles, según la entidad financiera. Si después de ese tiempo no lo ves, te recomendamos contactar directamente con ellos para verificarlo.">5. Devolución Yape</option>
+        <option value="Estamos procesando tu reembolso automáticamente a tu forma de pago original. Si no es posible, lo recibirás en tu cuenta en forma de cupón o en tu billetera virtual de Pedidos Ya en un máximo de 48 horas. ¡Gracias por tu paciencia!">6. Devolución Pending Retry</option>
+        <option value="Ya gestionamos tu devolución. Queremos contarte cómo funciona: tu pago se hizo por una vía segura, una pasarela de pago. Esto significa que usamos un servicio seguro para manejar tu transacción. A veces, estas devoluciones son automáticas, así que te sugerimos revisar tu banco o la plataforma donde pagaste. Si no lo ves o tienes dudas, no dudes en volver a contactarnos. Agradezco mucho tu paciencia y comprensión.">7. Devolución Rejected by Gateway</option>
+        <option value="Para tu tranquilidad, se ha enviado una constancia de la devolución a tu correo electrónico XXX, que garantiza que, por parte de Pedidos Ya, se hizo la devolución.">8. Correo de Pedidos Ya</option>
+    </select>
+    <input type="text" class="name-input" id="customerName" placeholder="Nombre del cliente" aria-label="Ingresa el nombre del cliente">
+    <div class="main-container">
+        <div class="robot-time-container">
+            <div class="clock-wrapper" style="text-align: center;">
+                <img id="clock-icon" src="https://images.vexels.com/media/users/3/136994/isolated/preview/aa3216bc8664471a5f75363fd74c728a-icono-de-reloj-temporizador.png" alt="Reloj">
+                <div id="peru-clock">00:00:00</div>
+            </div>
+            <div id="robot-container"></div>
+            <div class="clock-wrapper" style="text-align: center;">
+                <img id="pedidosya-logo" src="https://bestplacestoworkfor.org/sites/default/files/articles/Pedidosya.jpg" alt="PedidosYa Logo">
+            </div>
+        </div>
+        <h1>JHORDANMC TEMPLATES, CAMBIOS</h1>
+        <p>Haz clic para copiar una frase:</p>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'Te entiendo, xxx. Descuide, yo le puedo ayudar con el cambio de la dirección.')">1. Cambio de dirección de envío</button>
+            <button onclick="copiarAlPortapapeles(this, 'Para proceder con ello, ¿me podrías pasar tu dirección correcta, por favor?')">2. Cambio de dirección parte 2</button>
+            <button onclick="copiarAlPortapapeles(this, 'Me quedaré monitoreando su pedido para que todo salga bien. Si tienes alguna otra consulta, quedo atento ante cualquier duda. 🙌🏻')">3. P DX FPART</button>
+            <button onclick="copiarAlPortapapeles(this, 'Gracias por la confirmación, xxx. Ahora mismo te confirmo el nuevo horario. ')">4. Cambio de horario preorder parte 2</button>
+            <button onclick="copiarAlPortapapeles(this, 'Aprecio su paciencia, xxx. ¿Hay algo más en lo que pueda ayudarle?')">5. Pregunta de aseguramiento parte 1</button>
+            <button onclick="copiarAlPortapapeles(this, 'Gracias, xxx. Además de ello, ¿hay algo más con lo que le pueda ayudar? 🙌🏻')">6. Pregunta de aseguramiento parte 2</button>
+        </div>
+        <h2>Retomas</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'Gracias por tu gentil espera, xxx. ')">7. Gracias por tu espera</button>
+            <button onclick="copiarAlPortapapeles(this, 'Aprecio mucho su espera, xxx. Continúo gestionando su solicitud.')">8. Agradezco tu paciencia</button>
+            <button onclick="copiarAlPortapapeles(this, 'Gracias por aguardar, xxx.')">9. Gracias por aguardar</button>
+            <button onclick="copiarAlPortapapeles(this, 'Aprecio tu gentileza. Vuelvo en unos momentos.')">10. Aprecio la espera</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te agradezco por la espera, xxx. ¿Me podrías brindar unos minutos adicionales para poder ayudarte?')">11. Solicitar más tiempo</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te agradezco la espera, xxx. Estoy aquí para ayudarte con...')">12. Te agradezco la espera</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te agradezco la espera, xxx. Ya he gestionado el cambio de dirección.')">13. Te agradezco la espera por cambio de dirección</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te agradezco la espera, xxx. Estoy cargando aún los datos de la nueva dirección, espérame, por favor.')">14. Te agradezco la espera por cambio de dirección parte 2</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te agradezco la espera, xxx. Ya he gestionado el cambio de la nueva dirección.')">15. Te agradezco la espera por cambio de horario preorder</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te entiendo, xxx. Sé que has esperado bastante. Averiguaré lo ocurrido.')">16. Retoma por demora extrema</button>
+        </div>
+        <div class="header-container">
+            <h2>Despedida</h2>
+            <button class="mostrar-button" onclick="mostrarAccion()"></button>
+        </div>
+        <div class="flag-container" id="flagContainer">
+            <div class="flag-container-content">
+                <button class="close-button" onclick="cerrarFlagContainer()">X</button>
+                <h3>Despedidas por Países</h3>
+                <button class="farewell-switch-button" id="farewellSwitchButton" onclick="toggleFarewell()">Confianza</button>
+                <div class="flag-grid">
+                    <button class="mexico-button" onclick="copiarAlPortapapeles(this, getFarewell('mexico'))" data-country="mexico">México</button>
+                    <button class="colombia-button" onclick="copiarAlPortapapeles(this, getFarewell('colombia'))" data-country="colombia">Colombia</button>
+                    <button class="peru-button" onclick="copiarAlPortapapeles(this, getFarewell('peru'))" data-country="peru">Perú</button>
+                    <button class="argentina-button" onclick="copiarAlPortapapeles(this, getFarewell('argentina'))" data-country="argentina">Argentina</button>
+                    <button class="chile-button" onclick="copiarAlPortapapeles(this, getFarewell('chile'))" data-country="chile">Chile</button>
+                    <button class="venezuela-button" onclick="copiarAlPortapapeles(this, getFarewell('venezuela'))" data-country="venezuela">Venezuela</button>
+                    <button class="brasil-button" onclick="copiarAlPortapapeles(this, getFarewell('brasil'))" data-country="brasil">Brasil</button>
+                    <button class="elsalvador-button" onclick="copiarAlPortapapeles(this, getFarewell('elsalvador'))" data-country="elsalvador">El Salvador</button>
+                    <button class="guatemala-button" onclick="copiarAlPortapapeles(this, getFarewell('guatemala'))" data-country="guatemala">Guatemala</button>
+                    <button class="republicadominicana-button" onclick="copiarAlPortapapeles(this, getFarewell('republicadominicana'))" data-country="republicadominicana">República Dominicana</button>
+                    <button class="panama-button" onclick="copiarAlPortapapeles(this, getFarewell('panama'))" data-country="panama">Panamá</button>
+                    <button class="honduras-button" onclick="copiarAlPortapapeles(this, getFarewell('honduras'))" data-country="honduras">Honduras</button>
+                    <button class="paraguay-button" onclick="copiarAlPortapapeles(this, getFarewell('paraguay'))" data-country="paraguay">Paraguay</button>
+                    <button class="bolivia-button" onclick="copiarAlPortapapeles(this, getFarewell('bolivia'))" data-country="bolivia">Bolivia</button>
+                    <button class="uruguay-button" onclick="copiarAlPortapapeles(this, getFarewell('uruguay'))" data-country="uruguay">Uruguay</button>
+                </div>
+            </div>
+        </div>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, getDespedida('confianza'))">1. DESPEDIDA CONFIANZA</button>
+            <button onclick="copiarAlPortapapeles(this, getDespedida('comprension'))">2. DESPEDIDA COMPRENSIÓN</button>
+            <button onclick="copiarAlPortapapeles(this, getDespedida('alcontrario_confianza'))">3. Al contrario DESPEDIDA CONFIANZA</button>
+            <button onclick="copiarAlPortapapeles(this, getDespedida('alcontrario_comprension'))">4. Al contrario DESPEDIDA COMPRENSIÓN</button>
+        </div>
+        <h2>ENCUESTA</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'Me ayudarías mucho calificando la encuesta de acuerdo a mi atención. A pesar de los inconvenientes, espero que te vaya bien. ¡Gracias!')">1. ENCUESTA A PESAR DE </button>
+            <button onclick="copiarAlPortapapeles(this, 'Me ayudarías mucho calificando la encuesta de acuerdo a mi atención. Sigue viviendo fuerte ante las adversidades, espero que te vaya bien. ¡Gracias!')">2. ENCUESTA, VIVE FUERTE</button>
+        </div>
+        <p>CANCELACIONES</p>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'Comprendo su posición, xxx. No se preocupe, me ha pasado a mí también, yo le ayudaré con la cancelación de la orden. 💪🏻')">1. Cancelación cliente </button>
+            <button onclick="copiarAlPortapapeles(this, 'Ahora le confirmo la devolución para que no genere cobro alguno.')">2. Cancelación parte 2</button>
+        </div>
+        <div id="mensaje"></div>
+    </div>
+    <script>
+        let scene, camera, renderer, robot;
+        let leftPupil, rightPupil, leftShine, rightShine;
+        let leftEye, rightEye;
+        let mouseX = 0, mouseY = 0;
+        let targetRotationX = 0, targetRotationY = 0;
+
+        function initRobot() {
+            const container = document.getElementById('robot-container');
+            
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(0, 0, 12);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setClearColor(0x000000, 0);
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.shadowMap.enabled = true;
+            container.appendChild(renderer.domElement);
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight.position.set(5, 10, 10);
+            directionalLight.castShadow = true;
+            scene.add(directionalLight);
+
+            createRobot();
+            animateRobot();
+        }
+
+        function createRobot() {
+            robot = new THREE.Group();
+
+            const canvas = document.createElement('canvas');
+            canvas.width = 256;
+            canvas.height = 256;
+            const ctx = canvas.getContext('2d');
+            const gradient = ctx.createLinearGradient(0, 0, 0, 256);
+            gradient.addColorStop(0, '#1a1a1a');
+            gradient.addColorStop(1, '#000000');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 256, 256);
+            const gradientTexture = new THREE.CanvasTexture(canvas);
+
+            const headGeometry = new THREE.SphereGeometry(2.5, 32, 32);
+            const headMaterial = new THREE.MeshPhongMaterial({
+                map: gradientTexture,
+                shininess: 30
+            });
+            const head = new THREE.Mesh(headGeometry, headMaterial);
+            head.scale.set(1, 0.75, 0.6);
+            head.castShadow = true;
+            robot.add(head);
+
+            const goggleGeometry = new THREE.SphereGeometry(0.8, 32, 32);
+            const goggleMaterial = new THREE.MeshPhongMaterial({
+                color: 0x66CCFF,
+                shininess: 60,
+                transparent: true,
+                opacity: 0.85
+            });
+
+            const leftGoggle = new THREE.Mesh(goggleGeometry, goggleMaterial);
+            leftGoggle.position.set(-1.1, 1, 1.2);
+            leftGoggle.scale.set(1.3, 0.9, 0.4);
+            robot.add(leftGoggle);
+
+            const rightGoggle = new THREE.Mesh(goggleGeometry, goggleMaterial);
+            rightGoggle.position.set(1.1, 1, 1.2);
+            rightGoggle.scale.set(1.3, 0.9, 0.4);
+            robot.add(rightGoggle);
+
+            const goggleRimGeometry = new THREE.TorusGeometry(0.95, 0.06, 16, 32);
+            const rimMaterial = new THREE.MeshPhongMaterial({
+                color: 0x3399FF,
+                shininess: 80
+            });
+
+            const leftRim = new THREE.Mesh(goggleRimGeometry, rimMaterial);
+            leftRim.position.set(-1.1, 1, 1.4);
+            leftRim.scale.set(1.13, 0.78, 1);
+            robot.add(leftRim);
+
+            const rightRim = new THREE.Mesh(goggleRimGeometry, rimMaterial);
+            rightRim.position.set(1.1, 1, 1.4);
+            rightRim.scale.set(1.13, 0.78, 1);
+            robot.add(rightRim);
+
+            const faceGeometry = new THREE.SphereGeometry(2, 32, 32);
+            const faceMaterial = new THREE.MeshPhongMaterial({
+                color: 0xFFFFFF,
+                shininess: 40
+            });
+            const face = new THREE.Mesh(faceGeometry, faceMaterial);
+            face.position.set(0, -0.6, 1);
+            face.scale.set(0.95, 0.36, 0.45);
+            robot.add(face);
+
+            const eyeGeometry = new THREE.SphereGeometry(0.4, 32, 32);
+            const eyeMaterial = new THREE.MeshPhongMaterial({
+                color: 0x000000,
+                shininess: 100
+            });
+
+            leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            leftEye.position.set(-0.65, -0.4, 1.7);
+            robot.add(leftEye);
+
+            rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
+            rightEye.position.set(0.65, -0.4, 1.7);
+            robot.add(rightEye);
+
+            const pupilGeometry = new THREE.SphereGeometry(0.16, 16, 16);
+            const pupilMaterial = new THREE.MeshPhongMaterial({
+                color: 0x00c4ff,
+                emissive: 0x00c4ff,
+                emissiveIntensity: 0.4,
+                shininess: 100
+            });
+
+            leftPupil = new THREE.Mesh(pupilGeometry, pupilMaterial);
+            leftPupil.position.set(-0.65, -0.4, 2);
+            robot.add(leftPupil);
+
+            rightPupil = new THREE.Mesh(pupilGeometry, pupilMaterial);
+            rightPupil.position.set(0.65, -0.4, 2);
+            robot.add(rightPupil);
+
+            const shineGeometry = new THREE.SphereGeometry(0.06, 8, 8);
+            const shineMaterial = new THREE.MeshBasicMaterial({
+                color: 0x00ffff
+            });
+
+            leftShine = new THREE.Mesh(shineGeometry, shineMaterial);
+            leftShine.position.set(-0.55, -0.3, 2.1);
+            robot.add(leftShine);
+
+            rightShine = new THREE.Mesh(shineGeometry, shineMaterial);
+            rightShine.position.set(0.75, -0.3, 2.1);
+            robot.add(rightShine);
+
+            const shoulderGeometry = new THREE.SphereGeometry(0.4, 32, 32);
+            const shoulderMaterial = new THREE.MeshPhongMaterial({
+                map: gradientTexture,
+                shininess: 60
+            });
+
+            const leftShoulder = new THREE.Mesh(shoulderGeometry, shoulderMaterial);
+            leftShoulder.position.set(-2.6, 0.4, 0);
+            robot.add(leftShoulder);
+
+            const rightShoulder = new THREE.Mesh(shoulderGeometry, shoulderMaterial);
+            rightShoulder.position.set(2.6, 0.4, 0);
+            robot.add(rightShoulder);
+
+            const armGeometry = new THREE.BoxGeometry(0.6, 1.4, 0.6);
+            const armMaterial = new THREE.MeshPhongMaterial({
+                color: 0x808080,
+                shininess: 50
+            });
+
+            const leftArm = new THREE.Mesh(armGeometry, armMaterial);
+            leftArm.position.set(-3, 0, 0);
+            robot.add(leftArm);
+
+            const rightArm = new THREE.Mesh(armGeometry, armMaterial);
+            rightArm.position.set(3, 0, 0);
+            robot.add(rightArm);
+
+            const antennaGeometry = new THREE.SphereGeometry(0.25, 16, 16);
+            const antennaMaterial = new THREE.MeshPhongMaterial({
+                color: 0x00FFFF,
+                emissive: 0x00FFFF,
+                emissiveIntensity: 0.5
+            });
+
+            const leftAntenna = new THREE.Mesh(antennaGeometry, antennaMaterial);
+            leftAntenna.position.set(-3, 1, 0);
+            robot.add(leftAntenna);
+
+            const rightAntenna = new THREE.Mesh(antennaGeometry, antennaMaterial);
+            rightAntenna.position.set(3, 1, 0);
+            robot.add(rightAntenna);
+
+            scene.add(robot);
+        }
+
+        function onRobotMouseMove(event) {
+            const rect = document.getElementById('robot-container').getBoundingClientRect();
+            mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            mouseY = ((event.clientY - rect.top) / rect.height) * 2 - 1;
+
+            targetRotationY = mouseX * 0.3;
+            targetRotationX = mouseY * 0.3;
+        }
+
+        let blinkTime = 0;
+        let nextBlink = 3000;
+        let isBlinking = false;
+
+        function animateRobot() {
+            requestAnimationFrame(animateRobot);
+
+            robot.rotation.y += (targetRotationY - robot.rotation.y) * 0.05;
+            robot.rotation.x += (targetRotationX - robot.rotation.x) * 0.05;
+
+            const pupilMoveX = mouseX * 0.15;
+            const pupilMoveY = mouseY * 0.15;
+
+            leftPupil.position.x = -0.65 + pupilMoveX;
+            leftPupil.position.y = -0.4 + pupilMoveY;
+            rightPupil.position.x = 0.65 + pupilMoveX;
+            rightPupil.position.y = -0.4 + pupilMoveY;
+
+            leftShine.position.x = -0.55 + pupilMoveX;
+            leftShine.position.y = -0.3 + pupilMoveY;
+            rightShine.position.x = 0.75 + pupilMoveX;
+            rightShine.position.y = -0.3 + pupilMoveY;
+
+            blinkTime += 16;
+            if (blinkTime > nextBlink && !isBlinking) {
+                isBlinking = true;
+                blinkEyes();
+                blinkTime = 0;
+                nextBlink = 2800 + Math.random() * 1200;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        function blinkEyes() {
+            leftEye.scale.y = 0.1;
+            rightEye.scale.y = 0.1;
+            leftPupil.scale.y = 0.1;
+            rightPupil.scale.y = 0.1;
+            leftShine.scale.y = 0.1;
+            rightShine.scale.y = 0.1;
+
+            setTimeout(() => {
+                leftEye.scale.y = 1;
+                rightEye.scale.y = 1;
+                leftPupil.scale.y = 1;
+                rightPupil.scale.y = 1;
+                leftShine.scale.y = 1;
+                rightShine.scale.y = 1;
+                isBlinking = false;
+            }, 180);
+        }
+
+        // Template functionality
+        let isNight = false;
+        let isConfianza = true;
+        let startTime = Date.now();
+
+        function updatePeruClock() {
+            const now = new Date();
+            const peruTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Lima"}));
+            const hours = String(peruTime.getHours()).padStart(2, '0');
+            const minutes = String(peruTime.getMinutes()).padStart(2, '0');
+            const seconds = String(peruTime.getSeconds()).padStart(2, '0');
+            document.getElementById('peru-clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function updateTimer() {
+            const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+            document.getElementById('timerDisplay').textContent = `${elapsedTime}s`;
+        }
+
+        function resetTimer() {
+            startTime = Date.now();
+            updateTimer();
+        }
+
+        function toggleTime() {
+            isNight = !isNight;
+            document.getElementById('timeSwitchButton').textContent = isNight ? 'Noche' : 'Tarde';
+        }
+
+        function toggleFarewell() {
+            isConfianza = !isConfianza;
+            document.getElementById('farewellSwitchButton').textContent = isConfianza ? 'Confianza' : 'Comprensión';
+        }
+
+        function getDespedida(type) {
+            const customerName = document.getElementById('customerName').value.trim() || 'Cliente';
+            const time = isNight ? 'noche' : 'tarde';
+            const despedidas = {
+                confianza: `Gracias a usted por su confianza y tiempo ofrecido, ${customerName}. ¡Cuídese, tenga una buena ${time}! 🫂`,
+                comprension: `Gracias a usted por su comprensión y paciencia, ${customerName}. ¡Cuídese, tenga una buena ${time}! 🫂`,
+                alcontrario_confianza: `Al contrario, gracias a usted por su confianza y tiempo ofrecido, ${customerName}. ¡Cuídese, tenga una buena ${time}! 🫂`,
+                alcontrario_comprension: `Al contrario, gracias a usted por su comprensión y paciencia, ${customerName}. ¡Cuídese, tenga una buena ${time}! 🫂`
+            };
+            return despedidas[type];
+        }
+
+        function getFarewell(country) {
+            const customerName = document.getElementById('customerName').value.trim() || 'Cliente';
+            const time = isNight ? 'night' : 'afternoon';
+            const confianzaText = isConfianza ? 'confianza y tiempo ofrecido' : 'comprensión y paciencia';
+            const farewells = {
+                mexico: {
+                    afternoon: `Al contrario, gracias a ti por tu ${confianzaText}, ${customerName}. ¡Cuídate, que te vaya muy chido! 💚🤍❤️`,
+                    night: `Al contrario, gracias a ti por tu ${confianzaText}, ${customerName}. ¡Cuídate, que tengas una excelente noche! 💚🤍❤️`
+                },
+                colombia: {
+                    afternoon: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena tarde! 💛💙❤️`,
+                    night: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena noche! 💛💙❤️`
+                },
+                peru: {
+                    afternoon: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena tarde! 💖🤍❤️`,
+                    night: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena noche! 💖🤍❤️`
+                },
+                argentina: {
+                    afternoon: `Al contrario, gracias a vos por tu ${confianzaText}, ${customerName}. ¡Cuídate, ten una buena tarde! 🩵🤍🩵`,
+                    night: `Al contrario, gracias a vos por tu ${confianzaText}, ${customerName}. ¡Cuídate, ten una buena noche! 🩵🤍🩵`
+                },
+                chile: {
+                    afternoon: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena tarde! 💙🤍❤️`,
+                    night: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena noche! 💙🤍❤️`
+                },
+                venezuela: {
+                    afternoon: `Al contrario, gracias a ti por tu ${confianzaText}, ${customerName}. ¡Cuídate, que la paz te acompañe! 💛💙❤️`,
+                    night: `Al contrario, gracias a ti por tu ${confianzaText}, ${customerName}. ¡Cuídate, que tengas una buena noche! 💛💙❤️`
+                },
+                brasil: {
+                    afternoon: `Al contrario, gracias a você por sua ${confianzaText}, ${customerName}. ¡Cuídate, que você tenha uma ótima tarde! 💚💛💙`,
+                    night: `Al contrario, gracias a você por sua ${confianzaText}, ${customerName}. ¡Cuídate, que você tenha uma ótima noite! 💚💛💙`
+                },
+                elsalvador: {
+                    afternoon: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena tarde! 💙🤍💙`,
+                    night: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena noche! 💙🤍💙`
+                },
+                guatemala: {
+                    afternoon: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena tarde! 💙🤍💙`,
+                    night: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena noche! 💙🤍💙`
+                },
+                republicadominicana: {
+                    afternoon: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena tarde! 💙🤍❤️`,
+                    night: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena noche! 💙🤍❤️`
+                },
+                panama: {
+                    afternoon: `Al contrario, gracias a ti por tu ${confianzaText}, ${customerName}. ¡Cuídate, que tengas una buena tarde! ❤️🤍💙`,
+                    night: `Al contrario, gracias a ti por tu ${confianzaText}, ${customerName}. ¡Cuídate, que tengas una buena noche! ❤️🤍💙`
+                },
+                honduras: {
+                    afternoon: `Al contrario, gracias a vos por tu ${confianzaText}, ${customerName}. ¡Cuídate, que tengas una buena tarde! 💙🤍💙`,
+                    night: `Al contrario, gracias a vos por tu ${confianzaText}, ${customerName}. ¡Cuídate, que tengas una buena noche! 💙🤍💙`
+                },
+                paraguay: {
+                    afternoon: `Al contrario, gracias a vos por tu ${confianzaText}, ${customerName}. ¡Cuídate, que tengas una buena tarde! ❤️🤍💙`,
+                    night: `Al contrario, gracias a vos por tu ${confianzaText}, ${customerName}. ¡Cuídate, que tengas una buena noche! ❤️🤍💙`
+                },
+                bolivia: {
+                    afternoon: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena tarde! ❤️💛💚`,
+                    night: `Al contrario, gracias a usted por su ${confianzaText}, ${customerName}. ¡Cuídese, tenga una buena noche! ❤️💛💚`
+                },
+                uruguay: {
+                    afternoon: `Al contrario, gracias a vos por tu ${confianzaText}, ${customerName}. ¡Cuídate, ten una buena tarde! ☀️🩵🤍`,
+                    night: `Al contrario, gracias a vos por tu ${confianzaText}, ${customerName}. ¡Cuídate, ten una buena noche! ☀️🩵🤍`
+                }
+            };
+            return farewells[country][time];
+        }
+
+        function copiarAlPortapapeles(elemento, texto) {
+            const colorOriginal = elemento.style.backgroundColor;
+            const backdropOriginal = elemento.style.backdropFilter;
+            elemento.style.backgroundColor = 'red';
+            elemento.style.backdropFilter = 'none';
+            const customerName = document.getElementById('customerName').value.trim() || 'Cliente';
+            const textoFinal = texto.replace(/xxx/gi, customerName);
+            const tempInput = document.createElement('input');
+            tempInput.value = textoFinal;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            document.getElementById('mensaje').textContent = '¡Copiado!';
+            elemento.value = "";
+            setTimeout(() => {
+                elemento.style.backgroundColor = colorOriginal;
+                elemento.style.backdropFilter = backdropOriginal;
+                document.getElementById('mensaje').textContent = '';
+            }, 1000);
+        }
+
+        function mostrarAccion() {
+            const flagContainer = document.getElementById('flagContainer');
+            flagContainer.classList.toggle('active');
+        }
+
+        function cerrarFlagContainer() {
+            document.getElementById('flagContainer').classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const flagContainer = document.getElementById('flagContainer');
+            flagContainer.classList.remove('active');
+            setInterval(updateTimer, 1000);
+            setInterval(updatePeruClock, 1000);
+            updatePeruClock();
+            initRobot();
+            document.addEventListener('mousemove', onRobotMouseMove);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                resetTimer();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            const container = document.getElementById('robot-container');
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    </script>
+</body>
+</html>

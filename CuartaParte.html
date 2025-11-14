@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHORDANMC TEMPLATES - Frases Adicionales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1498116069452-debf99cb30f0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGVzcGFjaW8lMjBuZWdyb3xlbnwwfHwwfHx8MA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .main-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(107, 55, 148, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+            z-index: 1000;
+            width: 90%;
+            max-width: 600px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        img {
+            height: 60px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            object-fit: cover;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        h1 {
+            color: white;
+            margin: 0;
+            font-size: 2em;
+        }
+        h2 {
+            color: white;
+            margin: 15px 0 10px 0;
+            font-size: 1.5em;
+        }
+        p {
+            color: white;
+            margin: 10px 0;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            transition: background-color 0.3s;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089737.png');
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            padding-left: 40px;
+            text-align: left;
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089736.png');
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+        .navigation-bar {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            z-index: 2000;
+        }
+        .nav-button {
+            padding: 8px 16px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089737.png');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            padding-left: 35px;
+            text-align: left;
+            display: inline-block;
+        }
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089736.png');
+            background-size: 20px;
+            background-repeat: no-repeat;
+            background-position: 8px center;
+        }
+        .nav-button.home {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/25/25694.png');
+        }
+        .nav-button.home:hover {
+            background-image: url('https://cdn-icons-png.flaticon.com/512/25/25694.png');
+        }
+        #mensaje {
+            margin-top: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+            button, .nav-button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+            .navigation-bar {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation-bar">
+        <a href="Paginaprincipal.html" class="nav-button home">Inicio</a>
+        <a href="Primeraparte.html" class="nav-button">Página 1</a>
+        <a href="Segundaparte.html" class="nav-button">Página 2</a>
+        <a href="TerceraParte.html" class="nav-button">Página 3</a>
+        <a href="CuartaParte.html" class="nav-button">Página 4</a>
+    </div>
+
+    <div class="main-container">
+        <img src="https://bestplacestoworkfor.org/sites/default/files/articles/Pedidosya.jpg" alt="PedidosYa Logo">
+        <h1>JHORDANMC TEMPLATES, Frases Adicionales</h1>
+        <p>Haz clic para copiar una frase:</p>
+
+        <h2>Saludos y Bienvenida</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, '¡Hola! Bienvenido/a a PedidosYa. Soy xxx, ¿en qué puedo ayudarte el día de hoy? 😊')">1. Saludo inicial</button>
+            <button onclick="copiarAlPortapapeles(this, '¡Hola! Es un gusto poder atenderte. Mi nombre es xxx, ¿cómo puedo ayudarte? 🙌')">2. Saludo con nombre</button>
+            <button onclick="copiarAlPortapapeles(this, 'Hola, xxx. Gracias por contactarnos. ¿En qué podemos asistirte hoy?')">3. Saludo personalizado</button>
+            <button onclick="copiarAlPortapapeles(this, 'Buen día, xxx. Es un placer atenderte. ¿Cuéntame en qué te puedo ayudar?')">4. Saludo formal</button>
+        </div>
+
+        <h2>Verificación de Datos</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, '¿Me podrías confirmar tu correo electrónico registrado, por favor?')">5. Solicitar correo</button>
+            <button onclick="copiarAlPortapapeles(this, '¿Me podrías brindar el número de pedido para revisar tu orden?')">6. Solicitar número de pedido</button>
+            <button onclick="copiarAlPortapapeles(this, 'Para poder ayudarte mejor, ¿me confirmas tu número de teléfono registrado?')">7. Solicitar teléfono</button>
+            <button onclick="copiarAlPortapapeles(this, 'Perfecto, xxx. Ahora mismo verifico la información de tu pedido.')">8. Confirmación de verificación</button>
+        </div>
+
+        <h2>Disculpas y Empatía</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'Lamento mucho los inconvenientes que esto te ha causado, xxx. Permíteme ayudarte a resolver esta situación.')">9. Disculpa empática</button>
+            <button onclick="copiarAlPortapapeles(this, 'Entiendo perfectamente tu frustración, xxx. Yo también me sentiría de la misma manera. Déjame ayudarte.')">10. Empatía profunda</button>
+            <button onclick="copiarAlPortapapeles(this, 'Te ofrezco mis disculpas por esta situación, xxx. Vamos a solucionarlo juntos.')">11. Disculpa proactiva</button>
+            <button onclick="copiarAlPortapapeles(this, 'Comprendo totalmente tu molestia, xxx. Estoy aquí para encontrar la mejor solución.')">12. Comprensión total</button>
+        </div>
+
+        <h2>Actualización de Estado</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'xxx, veo que tu pedido está siendo preparado por el local. El tiempo estimado de entrega es a las XX:XX.')">13. Pedido en preparación</button>
+            <button onclick="copiarAlPortapapeles(this, 'Tu pedido ya fue retirado del local y está en camino a tu dirección. Deberías recibirlo aproximadamente a las XX:XX.')">14. Pedido en camino</button>
+            <button onclick="copiarAlPortapapeles(this, 'xxx, tu repartidor está muy cerca de tu ubicación. En unos minutos recibirás tu pedido.')">15. Repartidor cerca</button>
+            <button onclick="copiarAlPortapapeles(this, 'El local está terminando de preparar tu pedido. Mi compañero lo retirará en breve.')">16. Local terminando</button>
+        </div>
+
+        <h2>Soluciones y Compensaciones</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'Como compensación por los inconvenientes, he agregado un cupón de descuento de XXX a tu cuenta.')">17. Cupón de compensación</button>
+            <button onclick="copiarAlPortapapeles(this, 'xxx, he procesado la devolución total de tu pedido. El monto será reembolsado en un máximo de 7 días hábiles.')">18. Devolución procesada</button>
+            <button onclick="copiarAlPortapapeles(this, 'Para que no tengas que esperar más, voy a cancelar este pedido y procesaré el reembolso completo.')">19. Cancelación con reembolso</button>
+            <button onclick="copiarAlPortapapeles(this, 'He generado un crédito en tu billetera PedidosYa por el valor de XXX como compensación.')">20. Crédito compensatorio</button>
+        </div>
+
+        <h2>Problemas con el Repartidor</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'xxx, veo que el repartidor está teniendo dificultades para ubicar tu dirección. ¿Podrías brindarle alguna referencia adicional por el chat?')">21. Repartidor perdido</button>
+            <button onclick="copiarAlPortapapeles(this, 'Estoy en contacto con el repartidor. Me confirma que llegará en aproximadamente XX minutos.')">22. Contacto con repartidor</button>
+            <button onclick="copiarAlPortapapeles(this, 'He reasignado tu pedido a otro repartidor más cercano para agilizar la entrega.')">23. Reasignación de repartidor</button>
+            <button onclick="copiarAlPortapapeles(this, 'El repartidor me ha confirmado que ya tiene tu pedido y se dirige a tu ubicación.')">24. Confirmación del repartidor</button>
+        </div>
+
+        <h2>Problemas con el Local</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'xxx, he contactado al local y me confirmaron que tu pedido estará listo en XX minutos.')">25. Contacto con local</button>
+            <button onclick="copiarAlPortapapeles(this, 'El local está experimentando un alto volumen de pedidos. Estoy monitoreando tu orden para asegurar que salga lo antes posible.')">26. Local saturado</button>
+            <button onclick="copiarAlPortapapeles(this, 'Lamento informarte que el local no tiene disponible uno de los productos. ¿Te gustaría reemplazarlo o proceder con el reembolso?')">27. Producto no disponible</button>
+            <button onclick="copiarAlPortapapeles(this, 'He notificado al local sobre la demora. Te aseguro que están preparando tu pedido con prioridad.')">28. Notificación al local</button>
+        </div>
+
+        <h2>Seguimiento y Cierre</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, '¿Hay algo más en lo que pueda ayudarte hoy, xxx?')">29. Pregunta de cierre</button>
+            <button onclick="copiarAlPortapapeles(this, 'Perfecto, xxx. Estaré atento si necesitas cualquier otra cosa. ¡Que disfrutes tu pedido!')">30. Cierre positivo</button>
+            <button onclick="copiarAlPortapapeles(this, 'Ha sido un placer ayudarte, xxx. Si tienes alguna duda adicional, no dudes en escribirnos.')">31. Despedida cordial</button>
+            <button onclick="copiarAlPortapapeles(this, 'Quedo atento a cualquier consulta adicional. ¡Que tengas un excelente día!')">32. Disponibilidad continua</button>
+        </div>
+
+        <h2>Información General</h2>
+        <div class="button-grid">
+            <button onclick="copiarAlPortapapeles(this, 'Puedes rastrear tu pedido en tiempo real desde la app de PedidosYa, en la sección "Mis Pedidos".')">33. Rastreo de pedido</button>
+            <button onclick="copiarAlPortapapeles(this, 'Los cupones de descuento los encontrarás en tu billetera, sección "Cupones disponibles".')">34. Ubicación de cupones</button>
+            <button onclick="copiarAlPortapapeles(this, 'Si necesitas modificar tu dirección, puedes hacerlo desde "Mi cuenta" > "Direcciones guardadas".')">35. Modificar dirección</button>
+            <button onclick="copiarAlPortapapeles(this, 'Puedes contactar directamente al repartidor a través del chat disponible en tu pedido activo.')">36. Chat con repartidor</button>
+        </div>
+
+        <div id="mensaje"></div>
+    </div>
+
+    <script>
+        function copiarAlPortapapeles(boton, texto) {
+            const colorOriginal = boton.style.backgroundColor;
+            const backdropOriginal = boton.style.backdropFilter;
+            boton.style.backgroundColor = 'red';
+            boton.style.backdropFilter = 'none';
+            const tempInput = document.createElement('input');
+            tempInput.value = texto;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            document.getElementById('mensaje').textContent = '¡Copiado!';
+            setTimeout(() => {
+                boton.style.backgroundColor = colorOriginal;
+                boton.style.backdropFilter = backdropOriginal;
+                document.getElementById('mensaje').textContent = '';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

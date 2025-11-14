@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - PedidosYa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('https://images.unsplash.com/photo-1498116069452-debf99cb30f0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGVzcGFjaW8lMjBuZWdyb3xlbnwwfHwwfHx8MA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .main-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(107, 55, 148, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: white;
+            z-index: 1000;
+            max-width: 600px;
+            width: 90%;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            object-fit: cover;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        a.button {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089737.png');
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            padding-left: 45px;
+            text-align: left;
+        }
+        a.button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            background-image: url('https://cdn-icons-png.flaticon.com/512/2089/2089736.png');
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .button-container {
+                grid-template-columns: 1fr;
+            }
+            a.button {
+                padding: 12px 20px;
+                font-size: 1em;
+                padding-left: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <img src="https://bestplacestoworkfor.org/sites/default/files/articles/Pedidosya.jpg" alt="Logo de PedidosYa" class="logo">
+        <h1>Inicio - PedidosYa</h1>
+        <div class="button-container">
+            <a href="Primeraparte.html" class="button" aria-label="Ir a la primera página">Primera Página</a>
+            <a href="Segundaparte.html" class="button" aria-label="Ir a la segunda página">Segunda Página</a>
+            <a href="TerceraParte.html" class="button" aria-label="Ir a la tercera página">Tercera Página</a>
+            <a href="CuartaParte.html" class="button" aria-label="Ir a la cuarta página">Cuarta Página</a>
+        </div>
+    </div>
+</body>
+</html>
